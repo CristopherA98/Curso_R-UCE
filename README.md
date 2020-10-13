@@ -1,5 +1,5 @@
 # Curso R-UCE
- El curso tiene como objetivo brindar a los estudiantes una primera visión del entorno de lenguaje R. 
+ El curso está dirigido para profesionales en estadística y afines, tiene como objetivo brindar a los estudiantes una primera visión del entorno de lenguaje R. 
 # Contenido del curso
 ## Unidad 1
 * Instalación de R y RStudio
