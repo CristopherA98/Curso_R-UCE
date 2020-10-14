@@ -1,0 +1,160 @@
+---
+title: "Estructuras de control"
+author: "Cristopher Aguirre"
+date: "16 de octubre de 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Ejecución condicional
+
+Cuando se quiere forzar la ejecucion de alguna parte del programa según
+el resultado de la evaluacion de una condicional lógica se ejecuta una estructura de control. Hay diferentes estructuras que permiten la ejecucion condicional.
+
+<p align="center">
+![Estructuras de control](figures/E01.png){width=80%}
+
+### 1.1. Operadores condicionales if, if else, ifelse
+
+## if 
+
+Solo evalua una condición lógica y si se cumple se ejecuta un código escrito entre corchetes, si no se cumple salta a la siguiente orden.
+
+```{r,eval=FALSE}
+if (expresion_logica) {
+  expression1 ...
+}
+
+```
+
+### Ejemplo
+
+```{r}
+a <-  5
+b <-  5
+if (a == b){
+  print("a es igual a b")
+}
+```
+
+## if else
+
+Aquí siempre se ejecuta un bloque de codigo, el bloque uno si se cumple o el bloque dos si no se cumple.
+
+```{r, eval=FALSE}
+if (logical_expression) {
+expression_1
+...
+} else {
+expression_2
+...
+}
+
+```
+
+### Ejemplo
+
+```{r}
+a <- 7
+b <- 5
+if (a == b){
+  print("a es igual a b")
+} else{
+  print("a es diferente de b")
+}
+
+```
+
+La evaluacion lógica no es vectorizada. Dado un vector de números enteros, escriba un programa que diga si son positivos o negativos.
+
+```{r}
+x <- c(2, 3, -5, 6, -2, 8)
+if (x > 0) {
+  print("positivo")
+} else {
+  print("negativo")
+}
+
+```
+
+## ifelse
+
+Es una versión mas corta de if/else en el que se evalúa si cada uno de los 
+elementos de un vector cumple una condicion; si la cumple se adopta la expresión 'A' si no la cumple se adopta la expresion 'B'.
+
+
+```{r,eval=FALSE}
+ifelse(logical_expression, A, B)
+```
+
+### Ejemplo
+
+```{r}
+x <- c(2, 3, -5, 6, -2, 8)
+ifelse(x > 0,"positivo","negativo")
+```
+
+## for
+
+Cuando se desea una ejecucion un determinado número de veces, o
+una secuencia de veces se escribe entre parentesis una variable de 'vuelta' y un vector de secuencia. Se ejecutara el código mientras var in seq sea cierto.
+
+```{r,eval=FALSE}
+for(var in seq) expr
+
+```
+
+### Ejemplo
+
+```{r}
+# Ejemplo 1
+for (i in 1:4) 
+  print(i)
+
+# Ejemplo 2
+x <- c(12, 22, 28, 41)
+for (i in x) 
+  print(i+1)
+```
+
+## repeat
+
+Aquí no se utiliza ninguna variable de 'vuelta'; el código se repite indefinidamente hasta que se apague el ordenador, se pulse Ctrl+C o se encuentre una declaracion **break.**
+
+```{r,eval=FALSE}
+repeat expr
+```
+
+### Ejemplo 
+```{r}
+i <- 1
+repeat {
+  if (i > 5) break
+  else{
+    cat('\n', i, "años de edad")
+    i <- i + 1
+  }
+}
+
+```
+
+## while
+
+Otras veces se repite el codigo mientras una condicióon es verdadera 
+
+```{r,eval=FALSE}
+while(cond) expr
+```
+### Ejemplo 
+
+```{r}
+i <- 1
+while (i<5) {
+  i <- i+1
+  print(i)
+}
+```
+
