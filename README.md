@@ -28,5 +28,6 @@
 * [Victor Morales](https://github.com/vmoprojs)
  ## Notas
  **El repositorio del curso se irá actualizando conforme se vaya avanzando en el mismo.**
+ 
  **Para poder acceder a cada unidad se debe entrar a la carpeta que indica sú número y todo el material del curso se encuentra en la carpeta 'Clases'.**
  
