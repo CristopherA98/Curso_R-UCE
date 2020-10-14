@@ -1,0 +1,19 @@
+---
+title: "Curso de R - UCE"
+author: "Cristopher Aguirre"
+date: "14 de octubre de 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ¿Cómo instalar R?
+
+  Para poder instalar R de una forma correcta se debe seguir los siguientes pasos:
+  
+     1. Instalar R
+     2. Instalar RStudio (IDE que permite ejecutar códgio R de una forma más amigable)
+
+## 1. Instalar R
