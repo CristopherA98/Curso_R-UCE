@@ -20,6 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### Para Windows
   * Ingresar al siguiente link **([Descargar R](https://mirror.epn.edu.ec/CRAN/))**.
+  * Descargar e instalar R para Windows
+  * Click en **install R for the first time.**
   * Dar click en donde se indica y descargar el archivo **.exe**.
   <p align="center">
   ![Descargar R](figures/R01.png)
