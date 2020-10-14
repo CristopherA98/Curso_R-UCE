@@ -47,7 +47,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 3. Entorno de trabajo RStudio.
 
-  * Ponemos en el buscar de Windows RStudio.
+  * Ponemos en el buscador de Windows RStudio.
   * Abrimos el programa 
   
 <p align="center">
