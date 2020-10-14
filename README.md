@@ -9,7 +9,7 @@
 <th> Detalle </th>
 </tr>
 </thead>
-<tbody>
+</table>
 * Instalación de R y RStudio
 * Primeros pasos en R (Estructuras de Datos)
 * Lectura de datos
