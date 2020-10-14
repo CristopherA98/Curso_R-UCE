@@ -13,20 +13,14 @@
 <tbody>
 <tr class="odd">
 <td>C1-0</td>
-<td>Instalación</td>
+<td>Instalación de R y RStudio</td>
 </tr>
 <tr class="even">
 <td>C1-1</td>
-<td>Introducción</td>
+<td>Introducción (Estructuras de Datos)</td>
 </tr>
 </tbody>
 </table>
-
-* Instalación de R y RStudio
-* Primeros pasos en R (Estructuras de Datos)
-* Lectura de datos
-* Análsiis Descriptivo de Datos
-* Manipulación de Datos
 
  # Fuentes
  Repositorios de GitHub de:
