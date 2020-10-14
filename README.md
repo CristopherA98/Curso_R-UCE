@@ -20,7 +20,7 @@
 </tr>
 <tr class="even">
 <td>C1-2</td>
-<td>Estructuras de Control)</td>
+<td>Estructuras de Control</td>
 </tr>
 </tbody>
 </table>
