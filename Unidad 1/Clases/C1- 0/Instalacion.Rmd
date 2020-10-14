@@ -16,4 +16,42 @@ knitr::opts_chunk$set(echo = TRUE)
      1. Instalar R
      2. Instalar RStudio (IDE que permite ejecutar códgio R de una forma más amigable)
 
-## 1. Instalar R
+## 1. Descargar e Instalar R
+
+#### Para Windows
+  * Ingresar al siguiente link **([Descargar R](https://mirror.epn.edu.ec/CRAN/))**.
+  * Dar click en donde se indica y descargar el archivo **.exe**.
+  <p align="center">
+  ![Descargar R](figures/R01.png)
+
+  * Abrir y ejecutar el archivo **.exe** como administrador.
+  * Elegir el idioma.
+  * La ruta de instalación la dejamos por defecto como está. 
+  * Avanzar hasta opción de configuración, y elegimos **no**.
+  * Continuamos hasta la Selección de Tareas adicionales y si deseamos iconos en el escritorio lo dejamos seleccionado (de preferencia no).
+  * Y finalmente instalamos.
+  
+## 2. Descargar e Instalar RStudio
+  * Ingresar al siguiente link **([Descargar RStudio](https://rstudio.com/products/rstudio/download/))**.
+  * Dar click en descargar RStudio para Windows para descargar archivo **.exe**.
+  
+  <p align="center">
+  ![Descargar RStudio](figures/R02.png){width=60%}
+
+
+  * Abrir y ejecutar el archivo **.exe** como administrador.
+  * La ruta de instalación la dejamos por defecto como está. 
+  * Finalmente instalamos
+
+## 3. Entorno de trabajo RStudio.
+
+  * Ponemos en el buscar de Windows RStudio.
+  * Abrimos el programa 
+  
+<p align="center">
+  ![Entorno RStudio](figures/R03.png){width=50%}
+
+## Nota 
+
+ * **Es importante que se sigan el orden de instalación ya que se necesita descargar primero R para ejecutar RStudio.**
+
