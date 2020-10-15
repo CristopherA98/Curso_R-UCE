@@ -8,7 +8,7 @@
 # 1. Estructuras de control -----------------------------------------------
 
 
-## Información adicional
+## Informaci?n adicional
 browseURL(url = "https://www.datacamp.com/community/tutorials/tutorial-on-loops-in-r",
           browser = getOption("browser")) # Datacamp
 browseURL(url = "https://bookdown.org/jboscomendoza/r-principiantes4/if-else.html",
@@ -35,7 +35,7 @@ if (a == b){
 }
 
 # OJO 
-# La evaluacion lógica no es vectorizada.
+# La evaluacion l?gica no es vectorizada.
 x <- c(2, 3, -5, 6, -2, 8)
 if (x > 0) {
   print("positivo")
@@ -68,15 +68,15 @@ i <- 1
 repeat {
   if (i > 5) break
   else{
-    cat('\n', i, "años de edad")
+    cat('\n', i, "a?os de edad")
     i <- i + 1
   }
 }
 
 # Funcion cat
-# Esta función escribe texto y variables en la salida.
-# La secuencia de escape "\n" produce una nueva línea e impide que la siguiente 
-# salida del programa quede en la misma línea.
+# Esta funci?n escribe texto y variables en la salida.
+# La secuencia de escape "\n" produce una nueva l?nea e impide que la siguiente 
+# salida del programa quede en la misma l?nea.
 
 ### 1.2.3. while
 
@@ -91,7 +91,7 @@ while (i<5) {
 
 # 2. Familia apply --------------------------------------------------------
 
-# Fuente de información 
+# Fuente de informaci?n 
 browseURL(url = "https://www.guru99.com/r-apply-sapply-tapply.html", browser = getOption("browser")) 
 browseURL(url = "http://adv-r.had.co.nz/Functionals.html", browser = getOption("browser")) 
 browseURL(url = "https://www.datacamp.com/community/tutorials/r-tutorial-apply-family", browser = getOption("browser"))
