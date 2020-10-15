@@ -195,7 +195,7 @@ Aquí:
 ![Función apply](figures/apply.png){width=80%}
 
 ```{r}
-iris <- data.frame(iris)
+data("iris")
 apply(X = iris[,-5],MARGIN = 2,FUN = mean)
 apply(X = iris[,-5],MARGIN = 2,FUN = sum)
 
