@@ -18,6 +18,10 @@
 <td>C1-1</td>
 <td>Introducción (Estructuras de Datos)</td>
 </tr>
+<tr class="even">
+<td>C1-2</td>
+<td>Estructuras de Control</td>
+</tr>
 </tbody>
 </table>
 
