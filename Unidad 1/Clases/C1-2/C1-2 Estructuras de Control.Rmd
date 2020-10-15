@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 1. Ejecución condicional
+# 1. Ejecución condicional
 
 Cuando se quiere forzar la ejecucion de alguna parte del programa según
 el resultado de la evaluacion de una condicional lógica se ejecuta una estructura de control. Hay diferentes estructuras que permiten la ejecucion condicional.
@@ -17,9 +17,9 @@ el resultado de la evaluacion de una condicional lógica se ejecuta una estructu
 <p align="center">
 ![Estructuras de control](figures/E01.png){width=80%}
 
-### 1.1. Operadores condicionales if, if else, ifelse
+## 1.1. Operadores condicionales if, if else, ifelse
 
-## if 
+### 1.1.1. if 
 
 Solo evalua una condición lógica y si se cumple se ejecuta un código escrito entre corchetes, si no se cumple salta a la siguiente orden.
 
@@ -40,7 +40,7 @@ if (a == b){
 }
 ```
 
-## if else
+### 1.1.2 if else
 
 Aquí siempre se ejecuta un bloque de codigo, el bloque uno si se cumple o el bloque dos si no se cumple.
 
@@ -80,7 +80,7 @@ if (x > 0) {
 
 ```
 
-## ifelse
+### 1.1.3. ifelse
 
 Es una versión mas corta de if/else en el que se evalúa si cada uno de los 
 elementos de un vector cumple una condicion; si la cumple se adopta la expresión 'A' si no la cumple se adopta la expresion 'B'.
@@ -97,7 +97,9 @@ x <- c(2, 3, -5, 6, -2, 8)
 ifelse(x > 0,"positivo","negativo")
 ```
 
-## for
+## 1.2. Ejecucion repetitiva for, repeat, while
+
+### 1.2.1. for
 
 Cuando se desea una ejecucion un determinado número de veces, o
 una secuencia de veces se escribe entre parentesis una variable de 'vuelta' y un vector de secuencia. Se ejecutara el código mientras var in seq sea cierto.
@@ -107,20 +109,24 @@ for(var in seq) expr
 
 ```
 
-### Ejemplo
+### Ejemplos
 
 ```{r}
 # Ejemplo 1
-for (i in 1:4) 
+for (i in 1:4){
   print(i)
-
-# Ejemplo 2
-x <- c(12, 22, 28, 41)
-for (i in x) 
-  print(i+1)
+}
 ```
 
-## repeat
+```{r}
+# Ejemplo 2
+x <- c(12, 22, 28, 41)
+for (i in x) {
+  print(i+1)
+}
+```
+
+### 1.2.2. repeat
 
 Aquí no se utiliza ninguna variable de 'vuelta'; el código se repite indefinidamente hasta que se apague el ordenador, se pulse Ctrl+C o se encuentre una declaracion **break.**
 
@@ -141,7 +147,7 @@ repeat {
 
 ```
 
-## while
+### 1.2.3. while
 
 Otras veces se repite el codigo mientras una condicióon es verdadera 
 
@@ -151,10 +157,125 @@ while(cond) expr
 ### Ejemplo 
 
 ```{r}
+
+"Imprimamos solo los numeros menores a 5"
 i <- 1
 while (i<5) {
   i <- i+1
   print(i)
 }
 ```
+
+## 2. Familia apply
+
+### 2.1. apply
+
+Toma el marco de datos o la matriz como entrada y da la salida en vector, lista o matriz.
+La función apply () se usa principalmente para evitar usos explícitos de construcciones de bucle. Es la más básica de todas las colecciones que se puede utilizar sobre una matriz.
+
+Esta función toma 3 argumentos:
+
+*apply (X, MARGIN, FUN)*
+
+Aquí:
+
+ -x: una matriz o matriz
+
+ -MARGIN: toma un valor o rango entre 1 y 2 para definir dónde aplicar la función:
+
+   -MARGIN = 1: la manipulación se realiza en filas
+  
+   -MARGIN = 2: la manipulación se realiza en columnas
+  
+   -MARGIN = c (1,2): la manipulación se realiza en filas y columnas
+  
+ -FUN: indica qué función aplicar. Se pueden aplicar funciones integradas como media, mediana, suma, mínimo, máximo e incluso funciones definidas por el usuario.
+
+<p align="center">
+![Función apply](figures/apply.png){width=80%}
+
+```{r}
+iris <- data.frame(iris)
+apply(X = iris[,-5],MARGIN = 2,FUN = mean)
+apply(X = iris[,-5],MARGIN = 2,FUN = sum)
+
+```
+
+### 2.2. lapply
+
+La función *lapply* es útil para realizar operaciones en objetos de lista y devuelve un objeto de lista de la misma longitud que el conjunto original. lappy () devuelve una lista de longitud similar a la del objeto de lista de entrada, cada elemento del cual es el resultado de aplicar FUN al elemento correspondiente de la lista. lapply () toma una lista, un vector o un marco de datos como entrada y da una salida en la lista.
+
+*lapply (X, FUN)*
+
+Argumentos:
+
+-X: un vector o un objeto
+
+-FUN: Función aplicada a cada elemento de x
+
+l en lapply () significa lista. La diferencia entre lapply () y apply () se encuentra entre el retorno de salida. La salida de lapply () es una lista. lapply () se puede usar para otros objetos como marcos de datos y listas.
+
+    La función lapply () no necesita MARGEN.
+    
+### Ejemplos
+
+```{r}
+lapply(iris[,-5],FUN = mean)
+sapply(iris, function(x) summary(x))
+```
+
+
+```{r}
+#sobre un vector
+lapply(1:10, function(x) x^2)
+```
+
+## 2.3. sapply
+
+La función sapply () toma una lista, vector o marco de datos como entrada y da salida en vector o matriz. Es útil para operaciones en objetos de lista y devuelve un objeto de lista de la misma longitud que el conjunto original. La función sapply () hace el mismo trabajo que la función lapply () pero devuelve un vector.
+
+sapply (X, DIVERSIÓN)
+
+Argumentos:
+
+-X: un vector o un objeto
+
+-FUN: Función aplicada a cada elemento de x
+
+```{r}
+min.sl <- sapply(iris[,-5],min)
+min.sl #devuelve un vector
+```
+
+```{r}
+min.sl <-lapply(iris[,-5],min)
+min.sl #devuleve una lista
+```
+
+```{r}
+avg <- function (x) {  
+  (min(x) + max(x)) / 2
+}
+resultado <- sapply (iris[,-5], avg)
+resultado
+```
+
+## 2.4. tapply
+
+tapply () calcula una medida (media, mediana, mínima, máxima, etc.) o una función para cada variable de factor en un vector. Es una función muy útil que le permite crear un subconjunto de un vector y luego aplicar algunas funciones a cada uno de los subconjuntos.
+
+*tapply (X, INDEX, FUN = NULL)*
+
+Argumentos:
+
+-X: un objeto, generalmente un vector
+
+-INDEX: una lista que contiene el factor
+
+-FUN: Función aplicada a cada elemento de x
+
+```{r}
+tapply (iris$Sepal.Width, iris$Species, median)
+```
+
 
