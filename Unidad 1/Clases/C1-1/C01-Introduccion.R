@@ -115,6 +115,11 @@ str(x)
 # son equivalentes. un vector no puede contener otro vector
 c(1, c(2, c(3,4)))  ;  c(1, 2, 3, 4)
 
+x <- list(1:3, c("Source", "Stat", "Lab"), nomb_obj=c(TRUE, FALSE), c(1.3, 4.5))
+x[2]
+x[[4]]
+x$nomb_obj
+
 #----- Matrices
 
 mtx <- matrix (1:12,nrow=3, ncol=4, byrow=FALSE)
@@ -127,6 +132,8 @@ mtx
 # Columnas 2 y 4
 mtx <- matrix (1:12, nrow=3, ncol=4, byrow=FALSE)
 mtx[,c(2,4)]
+mtx[1,3]
+
 # Filas 2 y 3
 mtx[c(2,3),]
 
@@ -157,6 +164,7 @@ nomb <- c("John", "Paul", "George", "Ringo")
 nac <- c(1940, 1941, 1943, 1940)
 instr <- c("guitar", "bass", "guitar", "drums")
 df <- data.frame(nomb, nac, instr)
+
 df[2, c(2,3)] #Mediante df[i, j] se obtiene la componente i, j del data frame.
 
 df[2, 2] # componente 2, 2
