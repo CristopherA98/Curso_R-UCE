@@ -139,7 +139,8 @@ tapply (iris$Sepal.Width, iris$Species, median)
 by(iris[,1:4],iris$Species,colMeans)
 
 
-# Aplicación
+
+# Aplicación --------------------------------------------------------------
 
 asa.data <- read.csv("Datasets/ASA_pasajeros.csv")
 
