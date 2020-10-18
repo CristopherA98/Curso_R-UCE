@@ -19,7 +19,7 @@ browseURL(url = "https://bookdown.org/jboscomendoza/r-principiantes4/if-else.htm
 
 # Ejemplo 1
 a <-  5
-b <-  5
+b <-  10
 if (a == b){
   print("a es igual a b")
 }
@@ -66,7 +66,7 @@ for (i in x){
 ### 1.2.2. repeat
 i <- 1
 repeat {
-  if (i > 5) break
+  if (i > 15) break
   else{
     cat('\n', i, "a?os de edad")
     i <- i + 1
@@ -98,8 +98,15 @@ browseURL(url = "https://www.datacamp.com/community/tutorials/r-tutorial-apply-f
 
 ## 2.1. apply
 data(iris)
+iris <- data.frame(iris)
+
+
 apply(X = iris[,-5],MARGIN = 2,FUN = mean)
 apply(X = iris[,-5],MARGIN = 2,FUN = sum)
+
+data("airquality")
+apply(X = airquality,MARGIN = 2,FUN = mean,na.rm=T)
+sum(is.na(airquality$Ozone))
 
 ## 2.2. lapply
 
@@ -107,8 +114,10 @@ lapply(iris[,-5],FUN = mean)
 lapply(iris, function(x) summary(x))
 
 #sobre un vector
+seq(from=0,to=100,by=10)
+
 lapply(1:10, function(x) x^2)
-lapply()
+
 
 ## 2.2. sapply
 
@@ -126,3 +135,27 @@ resultado
 
 ## 2.2. tapply
 tapply (iris$Sepal.Width, iris$Species, median)
+
+by(iris[,1:4],iris$Species,colMeans)
+
+
+# Aplicación
+
+asa.data <- read.csv("Datasets/ASA_pasajeros.csv")
+
+lapply(asa.data,class)  
+lapply(asa.data$Pasajeros.nacionales,sum)
+
+asa.data$Estado
+unique(asa.data$Estado)
+
+sum(asa.data$Pasajeros.nacionales)  
+colnames(asa.data)
+asa.pasajeros <- asa.data[,c("Pasajeros.nacionales" ,"Pasajeros.internacionales")]
+lapply(asa.pasajeros,sum) 
+total <- sapply(asa.pasajeros,sum)
+sum(total)
+
+attach(asa.data)
+tapply(asa.data$Pasajeros.nacionales,asa.data$Estado,mean)
+tapply(Pasajeros.nacionales,Estado,sum)
