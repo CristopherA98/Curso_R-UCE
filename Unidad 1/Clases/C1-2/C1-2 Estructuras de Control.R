@@ -143,19 +143,19 @@ by(iris[,1:4],iris$Species,colMeans)
 
 asa.data <- read.csv("Datasets/ASA_pasajeros.csv")
 
-lapply(asa.data,class)  
-lapply(asa.data$Pasajeros.nacionales,sum)
+lapply(asa.data,class)# Observar el tipo de datos de cada variable
 
 asa.data$Estado
-unique(asa.data$Estado)
+unique(asa.data$Estado) #unique permite saber los valores sin repetición de una variable de tipo factor
 
-sum(asa.data$Pasajeros.nacionales)  
-colnames(asa.data)
+sum(asa.data$Pasajeros.nacionales)  #suma de pasajeros nacionales
+
+colnames(asa.data) # nombres de las vriables
 asa.pasajeros <- asa.data[,c("Pasajeros.nacionales" ,"Pasajeros.internacionales")]
-lapply(asa.pasajeros,sum) 
+lapply(asa.pasajeros,sum)  
 total <- sapply(asa.pasajeros,sum)
-sum(total)
+sum(total) # total de pasajeros sumados tanto internacional como nacionales
 
-attach(asa.data)
-tapply(asa.data$Pasajeros.nacionales,asa.data$Estado,mean)
+attach(asa.data) # acceder más facilmente a la base de datos
+tapply(asa.data$Pasajeros.nacionales,asa.data$Estado,mean) 
 tapply(Pasajeros.nacionales,Estado,sum)
