@@ -188,10 +188,16 @@ bike_final %>%
 
 
 
+# FUENTES ADICIONALES -----------------------------------------------------
 
+browseURL(url = "https://www.datasciencemadesimple.com/join-in-r-merge-in-r/",
+          browser = getOption("browser")) 
 
+browseURL(url = "https://www.datasciencemadesimple.com/rbind-in-r/",
+          browser = getOption("browser")) 
 
-
+browseURL(url = "https://www.datasciencemadesimple.com/cbind-in-r/",
+          browser = getOption("browser")) 
 
 
 
