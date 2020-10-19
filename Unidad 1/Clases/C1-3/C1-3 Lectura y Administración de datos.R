@@ -32,17 +32,22 @@ str(ejemplo)
 
 ### Ahora si deseo cargar las distintas hojas del mismo archivo excel em
 ### dataframes diferentes.
+data_list <- excel_sheets("Datasets/data_bikes/bikes.xlsx")
+list <- lapply(data_list, function(data_list) read_excel("Datasets/data_bikes/bikes.xlsx",
+                                                         sheet = data_list))
+names(list) <- data_list
+list2env(list,envir = .GlobalEnv)
 
-## 1.2. Base de datos de tipo '.sav o SPSS'
+## 1.3. Base de datos de tipo '.sav o SPSS'
 
 bdd_personas <- read_sav("Datasets/SPSS_enemdu_201912/enemdu_persona_201912.sav")
 str(bdd_personas)
 
-## 1.2. Base de datos de tipo '.dta o Stata'
+## 1.4. Base de datos de tipo '.dta o Stata'
 
 data_dta <- read_dta("Datasets/datos/original/Area - Caracteristicas generales (Personas).dta")
 
-#### 1.3 Importar bases de datos en formato .RData
+## 1.5 Importar bases de datos en formato .RData
 ?load
 load("Datasets/BiciQ.RData") %>% data.frame()
 str(df1)
