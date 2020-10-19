@@ -22,6 +22,11 @@
 <td>C1-2</td>
 <td>Estructuras de Control</td>
 </tr>
+</tr>
+<tr class="even">
+<td>C1-3</td>
+<td>Lectura y administración de datos</td>
+</tr>
 </tbody>
 </table>
 
