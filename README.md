@@ -31,7 +31,7 @@
 </table>
 
  # Fuentes
- Repositorios de GitHub de:
+ Repositorios GitHub de:
 * [Karen Calva](https://github.com/KarenCalva)
 * [Nestor Montaño](https://github.com/nestormontano)
 * [Victor Morales](https://github.com/vmoprojs)
