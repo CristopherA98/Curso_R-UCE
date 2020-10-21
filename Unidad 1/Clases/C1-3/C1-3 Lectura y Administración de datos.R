@@ -19,7 +19,7 @@ libraries(packages)
 # 1. Importar base de datos -----------------------------------------------
 
 ## 1.1. Base de datos de tipos '.csv'
-?read_csv2
+?read_csv
 
 data_asa <- read_csv("Datasets/ASA_pasajeros.csv")
 str(data_asa)
@@ -152,7 +152,7 @@ match(x= df_base$Alumno, table= df_modificatorio$Alumno,nomatch = 0)
 
 # Indexar con %in% o match
 
-df_base[df_base$Alumno %in% df_modificatorio$Alumno, ] #%in%
+df_modificatorio[df_modificatorio$Alumn %in% df_base$Alumno, ] #%in%
 df_base[match(x = df_modificatorio$Alum, table = df_base$Alum, nomatch = 0), ] # match()
 
 # 3. Aplicación -----------------------------------------------------------
