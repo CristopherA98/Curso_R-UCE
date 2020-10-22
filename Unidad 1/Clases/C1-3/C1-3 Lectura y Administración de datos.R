@@ -157,7 +157,6 @@ df_base[match(x = df_modificatorio$Alum, table = df_base$Alum, nomatch = 0), ] #
 
 # 3. Aplicación -----------------------------------------------------------
 
-
 bdd_bikes <- read_excel("Datasets/data_bikes/bikes.xlsx")
 bdd_shop <- read_excel("Datasets/data_bikes/bikeshops.xlsx")
 bdd_orders <- read_excel("Datasets/data_bikes/orderlines.xlsx")
@@ -169,7 +168,7 @@ glimpse(bdd_bikes)
 ## 3.2. Unir datos
 ?left_join
 
-left_join(bdd_orders, bdd_bikes,by = c("product.id" = "bike.id"))
+bdd_orders %>% left_join(bdd_bikes,by = c("product.id" = "bike.id"))
 
 
 bike_final <- bdd_orders %>% 
@@ -180,18 +179,19 @@ bike_final %>%  glimpse()
 
 ## 3.3. Exportar archivos
 
-# fs::dir_create("carpetas")
+fs::dir_create("Datasets/Base Final")
 
 ### 3.3.1. Excel 
 bike_final %>% 
-  write_xlsx("Datasets/data_bikes/bike_final.xlsx")
+  write_xlsx("Datasets/Base Final/bike_final.xlsx")
 
 ### 3.3.2. CSV
 bike_final %>% 
-  write_xlsx("Datasets/data_bikes/bike_final.csv")
+  write_xlsx("Datasets/Base Final/bike_final.csv")
 
+### 3.3.3. .sav
 
-
+bike_final %>% write_sav("Datasets/Base Final/bike_final.sav")
 
 # FUENTES ADICIONALES -----------------------------------------------------
 

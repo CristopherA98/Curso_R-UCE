@@ -46,6 +46,7 @@ bdd_1$grupos.edad <- cut(bdd_1$edad,breaks = c(0,18,40,65,112),
 
 # 2. Paquete tidyverse (dplyr) --------------------------------------------
 
+
 bdd_1 <- tibble::as_tibble(bdd_1) 
 bdd_1
 
@@ -58,7 +59,7 @@ storms %>% select(day,hour) # solo las filas seleccionadas
 storms %>% select(-year, -wind) # todas excepto la indicada
 storms %>% select(name:hour)
 storms %>% select(-(name:hour))
-storms %>% select(starts_with("w"))
+storms %>% select(starts_with("l"))
 
 ### 2.1.2. Función filter
 
@@ -87,14 +88,14 @@ storms %>% mutate(freq.acumulative = cumsum(wind))
 
 data("Salaries")
 
-Salaries %>% summarise(mediana = median(salary), variance = var(salary))
+Salaries %>% summarise(mediana = median(salary), varianza = var(salary))
 
 ### 2.1.3. Función group_by
 
 Salaries %>% group_by(sex)
 
 Salaries %>%  group_by(sex) %>% 
-              summarise(mean = mean(salary), sum = sum(salary), n = n())
+              summarise(media = mean(salary), sum = sum(salary), n = n())
 
 
 # FUENTES ADICIONALES -----------------------------------------------------
