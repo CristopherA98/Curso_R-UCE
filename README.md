@@ -27,6 +27,10 @@
 <td>C1-3</td>
 <td>Lectura y administración de datos</td>
 </tr>
+<tr class="even">
+<td>C1-3</td>
+<td>Manipulación de datos</td>
+</tr>
 </tbody>
 </table>
 
