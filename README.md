@@ -28,7 +28,7 @@
 <td>Lectura y administración de datos</td>
 </tr>
 <tr class="even">
-<td>C1-3</td>
+<td>C1-4</td>
 <td>Manipulación de datos</td>
 </tr>
 </tbody>
