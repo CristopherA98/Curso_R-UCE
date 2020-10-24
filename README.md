@@ -32,7 +32,7 @@
 <td>Manipulación de datos</td>
 </tr>
 <tr class="even">
-<td>C1-4</td>
+<td>C1-5</td>
 <td>Visualización de datos</td>
 </tr>
 </tbody>
