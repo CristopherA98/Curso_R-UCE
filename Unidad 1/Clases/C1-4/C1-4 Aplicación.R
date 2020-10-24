@@ -4,6 +4,9 @@
 # 1. Ejecutar las siguientes lineas de código
 
 install.packages("devtools")
+install.packages('usethis')
+library(usethis)
+library(devtools)
 devtools::install_github("RamiKrispin/coronavirus")
 
 # 2. Esperar hasta que salga el mensaje siguiente:
@@ -34,7 +37,7 @@ total <- bdd_covid %>%
               filter(type == "confirmed") %>% 
               group_by(country) %>% 
               summarise(Confirmados = sum(cases)) %>% 
-              arrange(-Confirmados)
+              arrange(-Confirmados) 
 total %>% head(20)       
 
 ### 1.2.3. Tasa de mortalidad
@@ -52,3 +55,5 @@ bdd_final <- bdd_covid %>%
                 
 bdd_final %>% head(20)
 bdd_final %>% filter(country == "Ecuador")
+
+
