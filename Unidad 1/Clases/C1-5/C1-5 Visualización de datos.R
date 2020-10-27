@@ -100,6 +100,20 @@ ggplot(adjusted,aes(x=date,y=adjusted,color =symbol))+
                             name ="Empresa")+
         transition_reveal(date)
 
+# Paquete esquisse
+library(esquisse)
+# install.packages(shiny)
+data("iris")
+
+library(ggplot2)
+
+ggplot(iris) +
+ aes(x = Species, y = Sepal.Width, fill = Species) +
+ geom_boxplot() +
+ scale_fill_brewer(palette = "PiYG") +
+ labs(x = "Especies", y = "Valores", caption = "Tamaño de sepalo según las especies de flores", fill = "ESPECIES") +
+ theme_bw() +
+ theme(legend.position = "top")
 
 
 # FUENTES ADICIONALES -----------------------------------------------------

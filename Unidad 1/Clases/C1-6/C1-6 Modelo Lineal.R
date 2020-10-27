@@ -24,6 +24,8 @@ which(is.na(x)) # posición de los valores perdidos
 
 data(algae)
 glimpse(algae)
+is.na(algae)
+which(is.na(algae))
 sum(is.na(algae))
 
 algae %>%
@@ -36,15 +38,20 @@ algae %>%
   scale_fill_grey(name = "", 
                   labels = c("Present", 
                              "Missing")) +
-  xlab("Observación") +
+  labs(title = "Valores perdidos",
+       x="Observaciones",
+       y="Varibales")+
   theme(axis.text.y  = element_text(size = 10))
 
 ### 1.1.1. Paquete Hmisc
 
 sapply(algae,function(x){sum(is.na(x))}) # número de NA´s en la columnas
 round((apply(apply(X = algae,MARGIN = 2,FUN = is.na )
-             ,2,sum)/nrow(algae))*100,2)
+             ,MARGIN=2,FUN=sum)/nrow(algae))*100,2)
+
+
 # Eliminar las filas
+
 data.cleaning <- algae[!is.na(algae$Chla),]
 complete.cases(algae)
 data.cleaning2 <- algae[complete.cases(algae),]
@@ -52,13 +59,19 @@ data.cleaning2 <- algae[complete.cases(algae),]
 
 ## Imputar por la media
 
+
+mean(algae$Chla,na.rm = T)
 algae$Chla_mean <- impute(algae$Chla, mean)
 
 ## Imputar con valor aleatorios
 
 algae$Chla_random <- impute(algae$Chla,'random')
 
-algae$Chla_median <- impute(algae$Chla,'median')
+median(algae$Chla,na.rm = T)
+algae$Chla_median <- impute(algae$Chla,median)
+which(is.na(algae$Chla))
+
+algae[56,]
 
 ### 1.1.2. Paquete mice
 
@@ -68,6 +81,9 @@ summary(imputed_Data)
 
 algae_mice <- complete(imputed_Data,2)
 sapply(algae_mice,function(x){sum(is.na(x))})
+algae_mice[56,]
+
+
 
 ### 1.1.1. Paquete DWwR
 algae_knn<-knnImputation(algae)
@@ -78,6 +94,7 @@ sapply(algae_mice,function(x){sum(is.na(x))})
 
 data (Ozone, package="mlbench")
 glimpse(Ozone)
+sapply(Ozone,function(x){sum(is.na(x))})
 
 # Método IQR
 
@@ -90,11 +107,20 @@ outliers<-function(x){
   return(x)}
 # Solo variables numeric
 numeric_cols <-names(Ozone)[sapply(Ozone, is.numeric)]
-numeric_data<-Ozone[,names(Ozone)%in%numeric_cols]
+numeric_data<-Ozone[,names(Ozone)%in% numeric_cols]
 
 Ozone_IQR<- data.frame(sapply(numeric_data,outliers))
 
-ggplot(numeric_data)
+ggplot(numeric_data,aes(x=V13))+
+  geom_boxplot()
+
+ggplot(Ozone_IQR,aes(x=V13))+
+  geom_boxplot()
+
+numeric_data[350,"V13"] <- 500
+
+mean(numeric_data$V13)
+mean(Ozone_IQR$V13)
 
 # Vecino más cercano
 
@@ -110,7 +136,16 @@ numeric_data<-Ozone[,names(Ozone)%in% numeric_cols]
 
 outliers_missing <-data.frame(sapply(numeric_data,outliers))
 
+ggplot(numeric_data,aes(x=V13))+
+  geom_boxplot()
+
+ggplot(outliers_missing,aes(x=V13))+
+  geom_boxplot()
+
 Ozone_knn<-knnImputation(outliers_missing)
+
+mean(numeric_data$V13)
+mean(outliers_missing$V13,na.rm = T)
 
 # FUENTES ADICIONALES -----------------------------------------------------
 
