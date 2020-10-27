@@ -25,8 +25,7 @@ which(is.na(x)) # posición de los valores perdidos
 data(algae)
 glimpse(algae)
 is.na(algae)
-which(is.na(algae))
-sum(is.na(algae))
+sum(is.na(algae))# suma de valores perdidos dentro de la data
 
 algae %>%
   is.na() %>%
@@ -69,15 +68,12 @@ algae$Chla_random <- impute(algae$Chla,'random')
 
 median(algae$Chla,na.rm = T)
 algae$Chla_median <- impute(algae$Chla,median)
-which(is.na(algae$Chla))
-
+which(is.na(algae$Chla))# ver donde estan los NA's para ver lo cambios
 algae[56,]
 
 ### 1.1.2. Paquete mice
-
-imputed_Data <- mice(algae, m=5, maxit = 50, method = 'pmm', seed = 500)
-summary(imputed_Data)
-
+algae<-algae[,colSums(is.na(algae))>0]
+imputed_Data <- mice(algae, m=5, maxit = 8, method = 'pmm', seed = 500)
 
 algae_mice <- complete(imputed_Data,2)
 sapply(algae_mice,function(x){sum(is.na(x))})
@@ -117,10 +113,15 @@ ggplot(numeric_data,aes(x=V13))+
 ggplot(Ozone_IQR,aes(x=V13))+
   geom_boxplot()
 
-numeric_data[350,"V13"] <- 500
-
+# Ojo la variable V13 no tiene NA´s por eso no necesito 'na.rm = T'
 mean(numeric_data$V13)
 mean(Ozone_IQR$V13)
+
+# Imputación de datos
+
+Ozone_IQR<-Ozone_IQR[,colSums(is.na(Ozone_IQR))>0]
+Ozone_knn<-knnImputation(Ozone_IQR) # metodo knn
+sapply(Ozone_knn,function(x){sum(is.na(x))})
 
 # Vecino más cercano
 
@@ -136,16 +137,22 @@ numeric_data<-Ozone[,names(Ozone)%in% numeric_cols]
 
 outliers_missing <-data.frame(sapply(numeric_data,outliers))
 
+# Gráfico empirico del tratamiento de los outliers
+
+# Gráfico con data normal
 ggplot(numeric_data,aes(x=V13))+
   geom_boxplot()
 
 ggplot(outliers_missing,aes(x=V13))+
   geom_boxplot()
 
+# Imputar valores NA
+outliers_missing<-outliers_missing[,colSums(is.na(outliers_missing))>0]
 Ozone_knn<-knnImputation(outliers_missing)
+sapply(Ozone_knn,function(x){sum(is.na(x))})
 
 mean(numeric_data$V13)
-mean(outliers_missing$V13,na.rm = T)
+mean(Ozone_knn$V13,na.rm = T)
 
 # FUENTES ADICIONALES -----------------------------------------------------
 
