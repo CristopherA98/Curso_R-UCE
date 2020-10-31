@@ -72,8 +72,8 @@ which(is.na(algae$Chla))# ver donde estan los NA's para ver lo cambios
 algae[56,]
 
 ### 1.1.2. Paquete mice
-algae<-algae[,colSums(is.na(algae))>0]
-imputed_Data <- mice(algae, m=5, maxit = 8, method = 'pmm', seed = 500)
+imputed<-algae[,colSums(is.na(algae))>0]
+imputed_Data <- mice(imputed, m=5, maxit = 8, method = 'pmm', seed = 500)
 
 algae_mice <- complete(imputed_Data,2)
 sapply(algae_mice,function(x){sum(is.na(x))})
