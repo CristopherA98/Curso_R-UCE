@@ -41,7 +41,7 @@
 </tr>
 </tbody>
 <tr class="even">
-<td>C1-</td>
+<td>C1-7</td>
 <td>Regresión Lineal</td>
 </tr>
 </tbody>
