@@ -4,7 +4,7 @@
 ####################################
 
 
-# Análisis de regresión ---------------------------------------------------
+# 1. Análisis de regresión -------------------------------------------------
 
 
 # Prerrequisitos
@@ -55,15 +55,13 @@ data_venta_publicidad %>%
   ggtitle("Datos + predicción")
 
 ## Agregar residuales a datos
+
 data_venta_publicidad <- data_venta_publicidad %>% 
   add_residuals(mod_1, var = 'RESIDUALES')
 
 ## Explorar los residuales
-head(data_venta_publicidad, 5)
-
-## Explorar los residuales
 ggplot(data_venta_publicidad, aes(RESIDUALES)) + 
-  geom_freqpoly(binwidth = 5000)
+  geom_freqpoly()
 
 ## Gráfico qq
 mod_1 %>% 
@@ -103,7 +101,7 @@ ggplot(data_venta_publicidad, aes(PUBLICIDAD_TOTAL, RESIDUALES)) +
 # H1: La varianza no es constante
 
 ## Prueba de homocedasticidad
-bptest( mod_1)
+bptest(mod_1)
 
 # Correlacion
 ## Grafico ACF
@@ -111,8 +109,10 @@ acf( residuals( mod_1))
 
 # H0: La autocorrelación de los residuos es 0 vs
 # H1: La autocorrelación de los residuos es diferente de 0
+dwtest(mod_1,alternative = "two.side")
 
 ## transformando el predictor
+
 mod_1a <- lm(VENTA ~ log(PUBLICIDAD_TOTAL), data = data_venta_publicidad)
 summary(mod_1a)
 
@@ -131,6 +131,7 @@ data_venta_publicidad %>%
   geom_line(aes(y= PREDIC), data = grid, colour = "red", size = 1) +
   ggtitle("Datos + predicción")
 
+bptest(mod_1a)
 
 # Prediccion --------------------------------------------------------------
 
@@ -140,3 +141,8 @@ predict(mod_1, newdata = data.frame(PUBLICIDAD_TOTAL= 2000))
 grid %>% filter(PUBLICIDAD_TOTAL== 2000)
 ## Predecir con el modelo transformado
 predict(mod_1a, newdata = data.frame(PUBLICIDAD_TOTAL= 2000))
+
+
+# 2. Regresión lineal multiple  -------------------------------------------
+
+

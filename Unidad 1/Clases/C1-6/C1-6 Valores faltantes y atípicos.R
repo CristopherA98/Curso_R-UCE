@@ -79,13 +79,13 @@ algae_mice <- complete(imputed_Data,2)
 sapply(algae_mice,function(x){sum(is.na(x))})
 algae_mice[56,]
 
-
+algae$mxPH <- algae_mice$mxPH
 
 ### 1.1.1. Paquete DWwR
 algae_knn<-knnImputation(algae)
 sapply(algae_mice,function(x){sum(is.na(x))})
 
-
+sapply(algae,function(x){sum(is.na(x))})
 # 2. Outliers -------------------------------------------------------------
 
 data (Ozone, package="mlbench")
