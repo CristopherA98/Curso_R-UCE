@@ -35,6 +35,15 @@
 <td>C1-5</td>
 <td>Visualización de datos</td>
 </tr>
+<tr class="even">
+<td>C1-6</td>
+<td>Detección y tratamiento de valores faltantes y atípicos</td>
+</tr>
+</tbody>
+<tr class="even">
+<td>C1-</td>
+<td>Regresión Lineal</td>
+</tr>
 </tbody>
 </table>
 
