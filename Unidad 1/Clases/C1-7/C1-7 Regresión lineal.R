@@ -175,6 +175,7 @@ ggpairs(datos, lower = list(continuous = "smooth"),
 full.model <- lm(esp_vida ~ ., data=datos)
 summary(full.model)
 
+# backward
 model1 <- stepAIC(full.model, trace=TRUE, direction="backward")
 model1$anova
 summary(model1)
@@ -217,9 +218,9 @@ summary(model4)$which
 model4_summary <- summary(model4)
 data.frame(model4_summary$outmat)
 
-cbind(model4_summary$which,
+a <- data.frame(cbind(model4_summary$which,
       model4_summary$bic,
-      model4_summary$adjr2)
+      model4_summary$adjr2))
 
 # Graficamente
 
@@ -234,7 +235,7 @@ summary(model4)$bic
 # Ver cual es el mejor modelo
 
 which(model4_summary$bic == min(summary(model4)$bic))
-model4_summary$which[3, ]
+model4_summary$which[7, ]
 
 which(model4_summary$adjr2 == max(summary(model4)$adjr2))
 model4_summary$which[9, ]
@@ -267,7 +268,7 @@ grid.arrange(plot1, plot2, plot3, plot4)
 
 # 2.3.1. Distribución normal de los residuos
 
-par(mfrow = c(1,1))
+# par(mfrow = c(1,1))
 qqnorm(model1$residuals)
 qqline(model1$residuals)
 
@@ -304,8 +305,8 @@ vif(model1)
 
 data2 <- data.frame(habitantes= 15000,
                     asesinatos= 65,
-                    universitarios= 300,
-                    heladas = 15)
+                    universitarios= 30.5,
+                    heladas = 35)
 
 predict(object=model1, newdata=data2)
 
@@ -322,10 +323,4 @@ browseURL(url="https://fhernanb.github.io/libro_regresion/",
 
 
 
-# # Identificación de posibles valores atípicos o influyentes
-# 
-# hatvalues(model1)
-# 
-# outlierTest(model1, cutoff=Inf, n.max=4)
-# influencePlot(model1)
-# influenceIndexPlot(model1, vars="Bonf", las=1)
+
