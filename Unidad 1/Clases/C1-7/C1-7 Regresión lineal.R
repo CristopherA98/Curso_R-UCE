@@ -300,16 +300,32 @@ corrplot(cor(dplyr::select(datos, habitantes, asesinatos,universitarios,heladas)
 
 vif(model1)
 
-# Identificación de posibles valores atípicos o influyentes
+## 2.4. Predicción
 
-hatvalues(model1)
+data2 <- data.frame(habitantes= 15000,
+                    asesinatos= 65,
+                    universitarios= 300,
+                    heladas = 15)
 
-outlierTest(model1, cutoff=Inf, n.max=4)
-influencePlot(model1)
-influenceIndexPlot(model1, vars="Bonf", las=1)
+predict(object=model1, newdata=data2)
 
 
 # FUENTES ADICIONALES -----------------------------------------------------
 
 browseURL(url="https://fhernanb.github.io/libro_regresion/",
           browser = getOption("browser"))
+
+
+
+
+
+
+
+
+# # Identificación de posibles valores atípicos o influyentes
+# 
+# hatvalues(model1)
+# 
+# outlierTest(model1, cutoff=Inf, n.max=4)
+# influencePlot(model1)
+# influenceIndexPlot(model1, vars="Bonf", las=1)
