@@ -21,14 +21,17 @@ install.packages('tidyverse')
 # Se indica si se deben instalar o no los 
 # paquetes requeridos para que este funcione.
 install.packages('tidyverse', dependencies=TRUE)
+
 # Instalacion multiples paquetes
-packages <- c("ggplot2","lubridate","readr")
-install.packages(packages, dependencies=TRUE)
+packages <- c("ggplot2","lubridate","readr","easypackages")
+install.packages(packages)
 # funciones apply
 # sapply(X=packages, FUN=install.packages, dependencies=TRUE)
 
 # Cargar las librerias
 library(ggplot2)
+library(easypackages)
+libraries(packages)
 # Cargar varios paquetes
 packages <- c("ggplot2","lubridate","readr")
 # funciones apply
@@ -131,6 +134,7 @@ mtx
 # Elementos de una matriz 
 # Columnas 2 y 4
 mtx <- matrix (1:12, nrow=3, ncol=4, byrow=FALSE)
+
 mtx[,c(2,4)]
 mtx[1,3]
 
@@ -153,7 +157,7 @@ x["hombres",,]
 
 dbl_vec <- c(1, 2, 3)
 chr_vec <- c("R", "S", "T")
-log_vec <- c(TRUE, FALSE, TRUE)
+log_vec <- c(TRUE, FALSE,TRUE)
 
 # Cremos el dataframe
 df <- data.frame(dbl_vec, chr_vec, log_vec)

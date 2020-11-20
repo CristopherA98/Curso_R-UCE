@@ -18,7 +18,7 @@ browseURL(url = "https://bookdown.org/jboscomendoza/r-principiantes4/if-else.htm
 ### 1.1.1. if
 
 # Ejemplo 1
-a <-  5
+a <-  10
 b <-  10
 if (a == b){
   print("a es igual a b")
@@ -99,14 +99,21 @@ browseURL(url = "https://www.datacamp.com/community/tutorials/r-tutorial-apply-f
 ## 2.1. apply
 data(iris)
 iris <- data.frame(iris)
-
+str(iris)
+apply(X=iris,MARGIN=2,FUN = mean)
 
 apply(X = iris[,-5],MARGIN = 2,FUN = mean)
 apply(X = iris[,-5],MARGIN = 2,FUN = sum)
 
 data("airquality")
+
+apply(X = airquality,MARGIN = 2,FUN = mean)
 apply(X = airquality,MARGIN = 2,FUN = mean,na.rm=T)
+
+is.na(airquality$Ozone)
+
 sum(is.na(airquality$Ozone))
+which(is.na(airquality$Solar.R))
 
 ## 2.2. lapply
 
@@ -129,7 +136,8 @@ min.sl #devuleve una lista
 
 avg <- function (x) {
   (min(x) + max(x)) / 2
-}
+  }
+
 resultado <- sapply (iris[,-5], avg)
 resultado
 
@@ -143,7 +151,7 @@ by(iris[,1:4],iris$Species,colMeans)
 # Aplicación --------------------------------------------------------------
 
 asa.data <- read.csv("Datasets/ASA_pasajeros.csv")
-
+str(asa.data)
 lapply(asa.data,class)# Observar el tipo de datos de cada variable
 
 asa.data$Estado
@@ -158,5 +166,6 @@ total <- sapply(asa.pasajeros,sum)
 sum(total) # total de pasajeros sumados tanto internacional como nacionales
 
 attach(asa.data) # acceder más facilmente a la base de datos
+
 tapply(asa.data$Pasajeros.nacionales,asa.data$Estado,mean) 
 tapply(Pasajeros.nacionales,Estado,sum)
