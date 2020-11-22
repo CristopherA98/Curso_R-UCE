@@ -43,7 +43,6 @@ bdd_1$grupos.edad <- cut(bdd_1$edad,breaks = c(0,18,40,65,112),
                          labels = c('menor a 18','De 18 a 40',
                                     'De 40 a 65','mayor a 65'))
 
-
 # 2. Paquete tidyverse (dplyr) --------------------------------------------
 
 
@@ -96,6 +95,82 @@ Salaries %>% group_by(sex)
 
 Salaries %>%  group_by(sex) %>% 
               summarise(media = mean(salary), sum = sum(salary), n = n())
+
+
+# 8. Manipulación de datos
+install.packages("tidyr")
+library(tidyr)
+
+crime.data <- read.csv("Datasets/U1/USArrests.csv", 
+                       stringsAsFactors = FALSE)
+
+View(crime.data)
+
+crime.data <- cbind(state = rownames(crime.data), crime.data)
+
+
+crime.data.1 <- gather(crime.data,
+                       key = "crime_type", 
+                       value = "arrest_estimate",
+                       Murder : UrbanPop)
+
+crime.data.2 <- gather(crime.data,
+                       key = "crime_type",
+                       value = "arrest_estimate",
+                       -state)
+
+crimate.data.3 <- gather(crime.data,
+                         key = "crime_type",
+                         value = "arrest_estimate",
+                         Murder, Assault)
+s
+
+crime.data.4 <- spread(crime.data.2, 
+                       key = "crime_type",
+                       value = "arrest_estimate") 
+
+
+crime.data.5 <- unite(crime.data,
+                      col = "Murder_Assault",
+                      Murder, Assault, 
+                      sep = "_")
+
+
+crime.data.6 <- separate(crime.data.5,
+                         col= "Murder_Assault",
+                         into = c("Murder", "Assault"),
+                         sep = "_")
+
+
+# 4. Variables dummies
+
+
+students <- read.csv("Datasets/U1/data-conversion.csv")
+
+bp <- c(-Inf, 10000, 31000, Inf)
+names <- c("Low", "Average", "High")
+
+students$Income.cat <- cut(students$Income, breaks = bp, labels = names)
+students$Income.cat2 <- cut(students$Income, breaks = bp)
+students$Income.cat3 <- cut(students$Income, 
+                            breaks = 4, 
+                            labels = c("Level 1", "Level 2", 
+                                       "Level 3", "Level 4")
+)
+
+
+#dummy variables
+students <- read.csv("Datasets/U1/data-conversion.csv")
+install.packages("dummies")
+library(dummies)
+
+students.dummy <- dummy.data.frame(students, sep = ".")
+names(students.dummy)
+
+dummy(students$State, sep=".")
+
+dummy.data.frame(students, names = c("State", "Gender"), sep = ".")
+
 
 
 # FUENTES ADICIONALES -----------------------------------------------------
