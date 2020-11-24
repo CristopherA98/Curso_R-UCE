@@ -39,7 +39,7 @@ bdd_1$sexo <- as.integer(bdd_1$sexo)
 # "De 18 a 40", "De 40 a 65", "mayor a 65".
 
 summary(bdd_1$edad)
-bdd_1$grupos.edad <- cut(bdd_1$edad,breaks = c(0,18,40,65,112),
+bdd_1$grupos.edad <- cut(bdd_1$edad,breaks = c(-Inf,18,40,65,Inf),
                          labels = c('menor a 18','De 18 a 40',
                                     'De 40 a 65','mayor a 65'))
 
@@ -123,7 +123,7 @@ crimate.data.3 <- gather(crime.data,
                          key = "crime_type",
                          value = "arrest_estimate",
                          Murder, Assault)
-s
+
 
 crime.data.4 <- spread(crime.data.2, 
                        key = "crime_type",
